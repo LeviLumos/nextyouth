@@ -1,0 +1,10 @@
+# foledr
+node_modules/
+.next/
+.vscode/
+
+
+# file
+
+pnpm-lock.yaml
+pnpm-workspace.yaml
