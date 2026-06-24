@@ -1,0 +1,14 @@
+# fodler
+
+node_modules/
+
+.vscode/
+.next/
+
+# file
+
+pnpm-lock.yaml
+pnpm-workspace.yaml
+
+
+
