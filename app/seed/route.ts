@@ -3,6 +3,12 @@ import postgres from 'postgres';
 import { invoices, customers, revenue, users } from '../lib/placeholder-data';
 
 const sql = postgres(process.env.POSTGRES_URL!, { ssl: 'require' });
+interface User {
+  id: string
+  name: string
+  email: string
+  password: string
+}
 
 async function seedUsers() {
   await sql`CREATE EXTENSION IF NOT EXISTS "uuid-ossp"`;
@@ -101,8 +107,24 @@ async function seedRevenue() {
   return insertedRevenue;
 }
 
+/**
+ * check if seed already
+ */
+async function queryCheck(): Promise<User | undefined> {
+  const data = await sql<User[]>`
+  SELECT id, name, email FROM users where name='User'
+  `
+  return data[0]
+}
+
 export async function GET() {
   try {
+    // checkout if seed already
+    const data = await queryCheck()
+    if (data && data.id) {
+      return Response.json({ message: 'already seed' })
+    }
+
     const result = await sql.begin((sql) => [
       seedUsers(),
       seedCustomers(),
