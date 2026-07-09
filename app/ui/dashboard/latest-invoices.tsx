@@ -8,12 +8,52 @@ export default async function LatestInvoices({
 }: {
   latestInvoices: LatestInvoice[];
 }) {
+
+  const invoiceItem = (invoice: LatestInvoice, i: Number) => {
+    return (
+      <div key={invoice.id} className={clsx('flex flex-row items-center justify-between py-4 border-b'
+      )}  >
+        <div>
+          <Image src={invoice.image_url} alt={`${invoice.name}'s profile picture`} width={32} height={32} />
+        </div>
+
+        <div className='flex-row' >
+          <p>
+            {invoice.name}
+          </p>
+          <p>
+            {invoice.email}
+          </p>
+        </div>
+        <p>
+          {invoice.amount}
+        </p>
+      </div>
+
+    )
+  }
+
+  const invoices = (invoices: LatestInvoice[]) => {
+    return (
+      invoices.map((invoice, i) => {
+        return invoiceItem(invoice, i)
+      })
+    )
+
+  }
+
   return (
     <div className="flex w-full flex-col md:col-span-4">
       <h2 className={`${lusitana.className} mb-4 text-xl md:text-2xl`}>
         Latest Invoices
       </h2>
       <div className="flex grow flex-col justify-between rounded-xl bg-gray-50 p-4">
+
+        {/* how to use the function invoices up */}
+        {invoices(latestInvoices)}
+
+
+
         {/* NOTE: Uncomment this code in Chapter 7 */}
 
         {/* <div className="bg-white px-6">
