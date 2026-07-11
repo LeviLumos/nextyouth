@@ -10,22 +10,23 @@ export default async function LatestInvoices({
 }) {
 
   const invoiceItem = (invoice: LatestInvoice, i: Number) => {
+    const title = `${invoice.name}'s profile title`
     return (
       <div key={invoice.id} className={clsx('flex flex-row items-center justify-between py-4 border-b'
       )}  >
         <div>
-          <Image src={invoice.image_url} alt={`${invoice.name}'s profile picture`} width={32} height={32} />
+          <Image src={invoice.image_url} title={title} alt={`${invoice.name}'s profile picture`} width={32} height={32} />
         </div>
 
-        <div className='flex-row' >
-          <p>
+        <div className='min-w-0' >
+          <p className='truncate text-sm font-semibold md:text-base' >
             {invoice.name}
           </p>
-          <p>
+          <p className='hidden text-sm text-gray-500 sm:block ' >
             {invoice.email}
           </p>
         </div>
-        <p>
+        <p className={`${lusitana.className} trunlate text-sm font-medium md:text-base `} >
           {invoice.amount}
         </p>
       </div>

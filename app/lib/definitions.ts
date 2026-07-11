@@ -31,6 +31,19 @@ export type Revenue = {
   revenue: number;
 };
 
+export type CardItem = {
+  title: string;
+  value: number | string;
+  type: 'invoices' | 'customers' | 'pending' | 'collected';
+};
+
+export type DashboardItem = {
+  numberOfCustomers: number,
+  numberOfInvoices: number,
+  totalPaidInvoices: number,
+  totalPendingInvoices: number,
+};
+
 export type LatestInvoice = {
   id: string;
   name: string;
