@@ -40,8 +40,8 @@ export type CardItem = {
 export type DashboardItem = {
   numberOfCustomers: number,
   numberOfInvoices: number,
-  totalPaidInvoices: number,
-  totalPendingInvoices: number,
+  totalPaidInvoices: string,
+  totalPendingInvoices: string,
 };
 
 export type LatestInvoice = {

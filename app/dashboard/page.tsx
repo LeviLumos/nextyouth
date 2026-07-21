@@ -3,7 +3,7 @@ import RevenueChart from "@/app/ui/dashboard/revenue-chart"
 import LatestInvoices from "@/app/ui/dashboard/latest-invoices"
 import { lusitana } from "@/app/ui/fonts"
 import { fetchRevenue, fetchLatestInvoices, fetchCardData } from "@/app/lib/data"
-import { CardItem } from "../lib/definitions"
+import { CardItem, DashboardItem } from "../lib/definitions"
 
 
 
@@ -23,12 +23,8 @@ export default async function Page() {
     )
   }
 
-  const cardList = (cardTotal: {
-    numberOfCustomers: number,
-    numberOfInvoices: number,
-    totalPaidInvoices: number,
-    totalPendingInvoices: number,
-  }) => {
+  const cardList = (cardTotal: DashboardItem
+  ) => {
 
     // title: string;
     // value: number | string;
