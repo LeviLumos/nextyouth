@@ -9,9 +9,11 @@ import { CardItem } from "../lib/definitions"
 
 
 export default async function Page() {
-  const revenue = await fetchRevenue()
-  const latestInvoices = await fetchLatestInvoices()
-  const cardData = await fetchCardData()
+  const [revenue, latestInvoices, cardData] = await Promise.all([
+    fetchRevenue(),
+    fetchLatestInvoices(),
+    fetchCardData()
+  ])
 
 
 
